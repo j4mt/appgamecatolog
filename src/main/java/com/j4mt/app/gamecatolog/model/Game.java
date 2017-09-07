@@ -5,7 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "GAME")
@@ -33,6 +36,9 @@ public class Game {
 
     @Column(name = "PIRATE_COPY")
     private boolean pirateCopy;
+
+    @ManyToMany(mappedBy = "games")
+    private Set<User> users;
 
     public Game() {
     }
@@ -101,5 +107,21 @@ public class Game {
 
     public void setPirateCopy(boolean pirateCopy) {
         this.pirateCopy = pirateCopy;
+    }
+
+    public void addUser(User user) {
+
+        if (users == null)
+            users = new HashSet<User>();
+
+        users.add(user);
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 }

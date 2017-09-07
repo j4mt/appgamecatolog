@@ -1,0 +1,8 @@
+
+spring:
+  application:
+    name: game-catalog
+
+  h2:
+    console:
+      enabled: true
