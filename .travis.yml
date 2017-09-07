@@ -11,4 +11,4 @@ script:
 - mvn test
 
 after_success:
-- bash <(curl -s https://codecov.io/bash)
+- bash <(curl -s https://codecov.io/bash) -t 2f6ae406-bc3c-4784-bdb2-e9072cefc64f
