@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -40,7 +41,10 @@ public class GameController {
     @GetMapping("/{id}")
     public Game getGame(@PathVariable Long id) {
 
-        return gameRepository.findOne(id);
+        Game game = gameRepository.findOne(id);
+        if (game == null)
+            throw new ResourceNotFoundException("Game not found");
+        return game;
     }
 
 
@@ -49,5 +53,12 @@ public class GameController {
     public void deleteGame(@PathVariable Long id) {
 
         gameRepository.delete(id);
+    }
+
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void updateGame(@PathVariable Long id, @RequestBody Game game) {
+        game.setId(id);
+        gameRepository.save(game);
     }
 }
