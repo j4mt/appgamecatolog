@@ -58,6 +58,6 @@ public class GameRepositoryTest {
 
         Game saved = gameRepository.save(game);
 
-        assertThat(saved.getUsers().size(), is(2));
+        assertThat(saved.getUsers().size(), is(4));
     }
 }
