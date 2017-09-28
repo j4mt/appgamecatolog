@@ -1,48 +1,32 @@
 package com.j4mt.app.gamecatolog.model;
 
-public enum Platform {
-    C64,
-    C128,
-    THE_3DO,
-    PLAYSTATION_2,
-    NINTENDO_DS,
-    GAME_BOY,
-    GAME_BOY_COLOR,
-    PLAYSTATION,
-    WII,
-    XBOX_360,
-    PLAYSTATION_3,
-    PLAYSTATION_PORTABLE,
-    GAME_BOY_ADVANCE,
-    NINTENDO_3DS,
-    PLAYSTATION_4,
-    NES,
-    SNES,
-    FAMICOM,
-    NINTENDO_64,
-    SEGA_GENISIS,
-    MEGADRIVE,
-    ATARI_2600,
-    XBOX_ONE,
-    XBOX,
-    GAME_CUBE,
-    WII_U,
-    MASTER_SYSTEM,
-    SEGA_GAME_GEAR,
-    TURBOGRAFAX_16,
-    SEGA_SATURN,
-    DREAMCAST,
-    NINTENDO_SWITCH,
-    PLAYSTATION_VITA,
-    SAGA_PICO,
-    WONDER_SWAN,
-    COLOR_TV_GAME,
-    INTELLIVISION,
-    N_GAGE,
-    COLECO_VISION,
-    MAGANAVOX_ODESSEY_2,
-    ATARI_LYNX,
-    PHILIPS_CD_I,
-    TELESTAR,
-    ATARI_5200
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "PLATFORM")
+public class Platform {
+
+    @Id
+    @Column(name = "ID", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @Column(name = "NAME")
+    private String name;
+
+    Platform() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
