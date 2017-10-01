@@ -8,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,21 +21,38 @@ public class Catalog {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @ManyToMany
-    @JoinTable(name = "USER_ID")
-    private User user;
+    @ManyToMany(mappedBy = "catalogs")
+    private Set<User> users;
 
-    @OneToMany
-    @JoinTable(name = "USER_GAME")
+    @ManyToMany
+    @JoinTable(name = "CATALOG_GAME")
     private Set<Game> games;
 
-    public void addGame(Game game, User user) {
+
+    //_________________________________________________________________________
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
+    public void addGame(Game game) {
 
         if (games == null)
             games = new HashSet<Game>();
 
         games.add(game);
-        game.addUser(user);
     }
 
     public Set<Game> getGames() {
