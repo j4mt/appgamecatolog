@@ -27,8 +27,11 @@ public class User {
     private String email;
 
     @ManyToMany
-    @JoinTable(name = "USER_GAME")
-    private Set<Game> games;
+    @JoinTable(name = "USER_CATALOG")
+    private Set<Catalog> catalogs;
+
+
+    //_________________________________________________________________________
 
     public User() {
     }
@@ -38,6 +41,9 @@ public class User {
         this.userName = userName;
         this.email = email;
     }
+
+
+    //_________________________________________________________________________
 
     public long getId() {
         return id;
@@ -63,20 +69,19 @@ public class User {
         this.email = email;
     }
 
-    public void addGame(Game game) {
+    public void addCatalog(Catalog catalog) {
 
-        if (games == null)
-            games = new HashSet<Game>();
+        if (catalogs == null)
+            catalogs = new HashSet<Catalog>();
 
-        games.add(game);
-        game.addUser(this);
+        catalogs.add(catalog);
     }
 
-    public Set<Game> getGames() {
-        return games;
+    public Set<Catalog> getCatalogs() {
+        return catalogs;
     }
 
-    public void setGames(Set<Game> games) {
-        this.games = games;
+    public void setCatalogs(Set<Catalog> catalogs) {
+        this.catalogs = catalogs;
     }
 }

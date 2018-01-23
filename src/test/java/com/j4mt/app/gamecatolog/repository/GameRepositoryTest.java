@@ -1,7 +1,6 @@
 package com.j4mt.app.gamecatolog.repository;
 
 import com.j4mt.app.gamecatolog.model.Game;
-import com.j4mt.app.gamecatolog.model.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,19 +44,19 @@ public class GameRepositoryTest {
         assertThat(gameRepository.findOne(persisted.getId()), is(nullValue()));
     }
 
-    @Test
-    public void testGameRepository_AddUsers() {
-
-        User user1 = entityManager.persist(new User("user1", "user1@domain.com"));
-        User user2 = entityManager.persist(new User("user2", "user2@domain.com"));
-
-        Game game = entityManager.persist(new Game("a", "b", "c", "d", 1, true));
-
-        game.addUser(user1);
-        game.addUser(user2);
-
-        Game saved = gameRepository.save(game);
-
-        assertThat(saved.getUsers().size(), is(2));
-    }
+//    @Test
+//    public void testGameRepository_AddUsers() {
+//
+//        User user1 = entityManager.persist(new User("user1", "user1@domain.com"));
+//        User user2 = entityManager.persist(new User("user2", "user2@domain.com"));
+//
+//        Game game = entityManager.persist(new Game("a", "b", "c", "d", 1, true));
+//
+//        game.addUser(user1);
+//        game.addUser(user2);
+//
+//        Game saved = gameRepository.save(game);
+//
+//        assertThat(saved.getUsers().size(), is(2));
+//    }
 }

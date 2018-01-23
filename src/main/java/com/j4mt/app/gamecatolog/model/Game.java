@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -38,7 +37,10 @@ public class Game {
     private boolean pirateCopy;
 
     @ManyToMany(mappedBy = "games")
-    private Set<User> users;
+    private Set<Catalog> catalogs;
+
+
+    //_________________________________________________________________________
 
     public Game() {
     }
@@ -52,6 +54,9 @@ public class Game {
         this.copies = copies;
         this.pirateCopy = pirateCopy;
     }
+
+
+    //_________________________________________________________________________
 
     public long getId() {
         return id;
@@ -109,19 +114,35 @@ public class Game {
         this.pirateCopy = pirateCopy;
     }
 
-    public void addUser(User user) {
+//    public void addUser(User user) {
+//
+//        if (users == null)
+//            users = new HashSet<User>();
+//
+//        users.add(user);
+//    }
+//
+//    public Set<User> getUsers() {
+//        return users;
+//    }
+//
+//    public void setUsers(Set<User> users) {
+//        this.users = users;
+//    }
 
-        if (users == null)
-            users = new HashSet<User>();
+//    public void addCatalog(Catalog catalog) {
+//
+//        if (catalogs == null)
+//            catalogs = new HashSet<Catalog>();
+//
+//        catalogs.add(catalog);
+//    }
 
-        users.add(user);
+    public Set<Catalog> getCatalogs() {
+        return catalogs;
     }
 
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
+    public void setCatalogs(Set<Catalog> catalogs) {
+        this.catalogs = catalogs;
     }
 }
