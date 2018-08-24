@@ -39,9 +39,9 @@ public class GameRepositoryTest {
 
         Game persisted = entityManager.persist(new Game("a", "b", "c", "d", 1, true));
 
-        gameRepository.delete(persisted.getId());
+        gameRepository.deleteById(persisted.getId());
 
-        assertThat(gameRepository.findOne(persisted.getId()), is(nullValue()));
+        assertThat(gameRepository.findById(persisted.getId()).isPresent(), is(false));
     }
 
 //    @Test

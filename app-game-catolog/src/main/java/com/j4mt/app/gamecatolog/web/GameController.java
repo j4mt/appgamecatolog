@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/game")
@@ -41,10 +42,10 @@ public class GameController {
     @GetMapping("/{id}")
     public Game getGame(@PathVariable Long id) {
 
-        Game game = gameRepository.findOne(id);
-        if (game == null)
+        Optional<Game> game = gameRepository.findById(id);
+        if (!game.isPresent())
             throw new ResourceNotFoundException("Game not found");
-        return game;
+        return game.get();
     }
 
 
@@ -52,7 +53,7 @@ public class GameController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteGame(@PathVariable Long id) {
 
-        gameRepository.delete(id);
+        gameRepository.deleteById(id);
     }
 
     @PutMapping("/{id}")
