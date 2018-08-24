@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.j4mt</groupId>
-    <artifactId>game-catalog</artifactId>
+    <artifactId>app-game-catalog</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>game-catalog</name>
+    <name>app-game-catalog</name>
     <description>Demo project for j4mt game collection</description>
 
     <parent>
