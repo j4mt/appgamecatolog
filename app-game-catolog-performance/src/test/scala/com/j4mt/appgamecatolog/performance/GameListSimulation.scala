@@ -7,7 +7,7 @@ import scala.concurrent.duration._
 class GameListSimulation extends Simulation {
 
   val httpConf = http
-    .baseURL("http://localhost:8080") // Here is the root for all relative URLs
+    .baseURL("http://localhost:8087") // Here is the root for all relative URLs
     //.acceptHeader("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8") // Here are the common headers
     .acceptHeader("application/json") // Here are the common header
     .acceptEncodingHeader("chunked")
