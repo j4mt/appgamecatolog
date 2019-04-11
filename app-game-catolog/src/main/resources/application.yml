@@ -1,9 +1,11 @@
 server:
   port: 8087
+  servlet:
+    context-path: /catalog
 
 spring:
   application:
-    name: game-catalog
+    name: game-trader-catalog
 
   h2:
     console:
